@@ -1,6 +1,6 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -g
-TARGET = circulus
+CXXFLAGS = -std=c++23 -Wall -g
+TARGET = kyklos
 SRC_DIR = src
 BIN_DIR = bin
 SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
