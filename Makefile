@@ -1,20 +1,26 @@
 CXX = g++
-CXXFLAGS = -std=c++23 -Wall -g
-TARGET = kyklos
-SRC_DIR = src
-BIN_DIR = bin
-SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
+CXXFLAGS = -std=c++20 -Wall -Wextra
+LDFLAGS =
 
-all: $(BIN_DIR)/$(TARGET)
+BUILD_DIR = build
+TARGET = $(BUILD_DIR)/kyklos
 
-$(BIN_DIR)/$(TARGET): $(SOURCES)
-	@mkdir -p $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+SRCS = main.cpp \
+       src/core/core.cpp \
+       src/cli/cli.cpp \
+
+HEADERS = $(shell find . -name "*.hpp")
+
+all: $(TARGET)
+
+$(TARGET): $(SRCS) $(HEADERS)
+	@mkdir -p $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $(TARGET) $(LDFLAGS)
 
 clean:
-	rm -rf $(BIN_DIR)
+	rm -rf $(BUILD_DIR)
 
 run: all
-	./$(BIN_DIR)/$(TARGET)
+	./$(TARGET)
 
 .PHONY: all clean run
