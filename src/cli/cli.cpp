@@ -225,7 +225,7 @@ void displayMenu()
     std::cout << "2. Circonferenza dato il centro e un punto\n";
     std::cout << "3. Circonferenza dato il centro e il raggio\n";
     std::cout << "4. Esci\n";
-    std::cout << "Enter your choice: ";
+    std::cout << "Seleziona un'opzione: ";
 }
 
 int getMenuChoice()
